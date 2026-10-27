@@ -71,6 +71,30 @@
   const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
   document.querySelectorAll('input[type="date"]').forEach(input => input.min = localToday);
 
+
+  document.querySelectorAll('[data-hero-action]').forEach(link => {
+    link.addEventListener('click', event => {
+      const selector = link.getAttribute('href');
+      const target = selector ? document.querySelector(selector) : null;
+      if (!target) {
+        if (link.dataset.heroAction === 'plan') {
+          window.location.href = 'mailto:wintripsafarishelp@gmail.com?subject=' +
+            encodeURIComponent("Let's plan my Wintrip journey") +
+            '&body=' + encodeURIComponent('Hello Wintrip Safaris,\n\nI would like help planning a trip. Please contact me with available options.\n');
+        }
+        return;
+      }
+      event.preventDefault();
+      if (window.location.hash !== selector) {
+        window.history.pushState(null, '', selector);
+      }
+      target.setAttribute('tabindex', '-1');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      window.setTimeout(() => target.focus({ preventScroll: true }), reduceMotion ? 0 : 350);
+    });
+  });
+
   // Contact links intentionally remain simple mailto actions in this frontend-only prototype.
   document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
     link.addEventListener('click', () => {
