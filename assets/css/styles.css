@@ -234,3 +234,44 @@ button{cursor:pointer}
   .quick-icon{width:51px;height:51px}
   .quick-icon svg{width:25px;height:25px}
 }
+
+/* Header polish: navigation floats directly over the hero and logo has no white tile. */
+.top-nav-wrap:before{
+  display:none !important;
+  background:transparent !important;
+  backdrop-filter:none !important;
+}
+.top-nav-wrap{
+  background:transparent !important;
+}
+.brand img{
+  background:transparent !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  box-shadow:none !important;
+  mix-blend-mode:multiply;
+  filter:drop-shadow(0 2px 4px rgba(20,12,8,.12));
+}
+.footer-logo img{
+  background:transparent !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  box-shadow:none !important;
+  mix-blend-mode:multiply;
+}
+.hero-actions [data-hero-action]{
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+#experiences,#contact{
+  scroll-margin-top:18px;
+}
+@media(max-width:760px){
+  .top-nav-wrap{
+    background:transparent !important;
+  }
+  .brand img{
+    max-width:100%;
+    object-fit:contain;
+  }
+}
