@@ -225,3 +225,12 @@ button{cursor:pointer}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+@media(max-width:480px){
+  .quick-links{grid-template-columns:repeat(6,minmax(0,1fr));column-gap:0;row-gap:12px;padding:0 10px;margin-top:-8px}
+  .quick-link{grid-column:span 2;font-size:9px;gap:6px;padding-bottom:2px}
+  .quick-link:nth-child(4){grid-column:2/span 2}
+  .quick-link:nth-child(5){grid-column:4/span 2}
+  .quick-icon{width:51px;height:51px}
+  .quick-icon svg{width:25px;height:25px}
+}
